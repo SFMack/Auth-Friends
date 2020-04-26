@@ -32,6 +32,9 @@ class FriendsList extends Component {
         .catch(err => console.log(err))
     }
 
+    toggleEditField = () => {
+        this.setState({ editFriend: (this.state.editFriend === true ? false : true ) })
+    }
 
     render() {
         const { friendsList } = this.state;
@@ -39,6 +42,7 @@ class FriendsList extends Component {
         return (
             <div className="friends-list-wrapper">
                 <h1>Friends List</h1>
+                <button onClick={this.toggleEditField}>Edit</button>
             <div className="friends-list-container">
                 {this.state.editFriend && <EditFriend editFriend={this.editFriend} />}
         {friendsList.map(friend => (
