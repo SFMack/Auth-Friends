@@ -23,6 +23,11 @@ class EditFriend extends Component {
         this.props.editFriend(1, this.state.updatedUser)
     }
 
+    // deleteFriend = e => {
+    //     e.preventDefault();
+    //     this.props.deleteFriend(2);
+    // }
+
     render() {
         return (
             <div className="AddFriendFormWrapper">
