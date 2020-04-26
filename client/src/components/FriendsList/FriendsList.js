@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
+import EditFriend from '../EditFriend/EditFriend.js';
 import { axiosWithAuth } from '../../utils/axiosWithAuth.js'; 
 
 class FriendsList extends Component {
     state= {
-        friendsList: []
+        friendsList: [],
+        editFriend: true
     }
 
     componentDidMount() {
@@ -21,6 +23,14 @@ class FriendsList extends Component {
         .catch(err => console.log(err))
     }
 
+    editFriend = (id, updatedUser) => {
+        axiosWithAuth().put(`/friends/${id}`, updatedUser)
+        .then( res => {
+            console.log(res)
+            this.props.history.push('/friends');
+        })
+        .catch(err => console.log(err))
+    }
 
 
     render() {
@@ -30,6 +40,7 @@ class FriendsList extends Component {
             <div className="friends-list-wrapper">
                 <h1>Friends List</h1>
             <div className="friends-list-container">
+                {this.state.editFriend && <EditFriend editFriend={this.editFriend} />}
         {friendsList.map(friend => (
                 <div key={friend.id}>
                 <h1>{friend.name}</h1>
