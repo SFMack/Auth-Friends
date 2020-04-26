@@ -11,7 +11,7 @@ class FriendsList extends Component {
     }
 
     getData = () => {
-        axiosWithAuth().get("http://localhost:5000/api/friends")
+        axiosWithAuth().get("/friends")
         .then(res => {
             console.log(res);
             this.setState({
@@ -27,9 +27,9 @@ class FriendsList extends Component {
         const { friendsList } = this.state;
 
         return (
-            <div className="FriendsListWrapper">
+            <div className="friends-list-wrapper">
                 <h1>Friends List</h1>
-            <div>
+            <div className="friends-list-container">
         {friendsList.map(friend => (
                 <div key={friend.id}>
                 <h1>{friend.name}</h1>
